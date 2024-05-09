@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Books4MU</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+
+    <!-- font awesome cdn link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <!-- custom css file link  -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon_io/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon_io/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon_io/favicon-16x16.png">
+<link rel="manifest" href="favicon_io/site.webmanifest">
+</head>
+<body>
+
+<!-- header section starts  -->
+
+<header class="header">
+
+    <div class="header-1">
+
+        <a href="#" class="logo"> <i class="fas fa-book"></i> Books4MU </a>
+
+        <form action="" class="search-form">
+            <input type="search" name="" placeholder="search here..." id="search-box">
+            <label for="search-box" class="fas fa-search"></label>
+        </form>
+
+        <div class="icons">
+            <div id="search-btn" class="fas fa-search"></div>
+            <a href="#cart" class="fas fa-shopping-cart" id="cart"></a>
+            <a href="#login"><div id="login-btn" class="fas fa-user"></div></a>
+        </div>
+
+    </div>
+
+    <div class="header-2">
+        <nav class="navbar">
+            <a href="#">home</a>
+            <a href="#reviews">reviews</a>
+            <a href="#blogs">feedback</a>
+            <a href="#featured">Books</a>
+        </nav>
+    </div>
+
+</header>
+
+<!-- header section ends -->
+
+<!-- bottom navbar  -->
+
+<nav class="bottom-navbar">
+    <a href="#home" class="fas fa-home"></a>
+    <a href="#featured" class="fas fa-list"></a>
+    <a href="#arrivals" class="fas fa-tags"></a>
+    <a href="#reviews" class="fas fa-comments"></a>
+    <a href="#feedback" class="fas fa-feedback"></a>
+</nav>
+
+<!-- login form  -->
+
+<div class="login-form-container" id="login">
+
+    <div id="close-login-btn" class="fas fa-times"></div>
+
+    <form action="">
+        <h3>login</h3>
+        <span>email</span>
+        <input type="email" name="email" class="box" placeholder="enter your email" id="mail">
+        <span>username</span>
+        <input type="text" name="username" class="box" placeholder="enter your username" id="uname">
+        <span>password</span>
+        <input type="password" name="password" class="box" placeholder="enter your password" id="pword">
+        <div class="checkbox">
+            <input type="checkbox" name="" id="remember-me">
+            <label for="remember-me"> remember me</label>
+        </div>
+        <input type="submit" value="sign in" class="btn">
+        <p>don't have an account ? <a href="#signup" id="create">create one</a></p>
+    </form>
+
+</div>
+<!-- end login form  -->
+<!-- signup form  -->
+<div class="signup-form-container" id="signup">
+
+    <div id="close-signup-btn" class="fas fa-times"></div>
+
+    <form action="">
+        <h3>sign up</h3>
+        <span>Email</span>
+        <input type="email" name="email" class="box" placeholder="enter your email" id="email">
+        <span>username</span>
+        <input type="text" name="username" class="box" placeholder="enter your username" id="username">
+        <span>password</span>
+        <input type="password" name="password" class="box" placeholder="enter your password" id="password">
+        <span>confirm password</span>
+        <input type="password" name="" class="box" placeholder="re-enter your password" id="">
+        <div class="checkbox">
+            <input type="checkbox" name="" id="remember-me">
+            <label for="remember-me"> remember me</label>
+        </div>
+        <input type="submit" value="sign up" class="btn">
+    </form>
+
+</div>
+<!-- end signup form  -->
+
+<!-- cart form  -->
+<div class="cart-form-container" id="cart">
+
+    <div id="close-cart-btn" class="fas fa-times"></div>
+
+    <form id="cart-form">
+        <h3>Your Cart</h3>
+
+        <input type="hidden" name="productId" id="productId">
+        <input type="number" name="quantity" id="quantity" min="1">
+        <input type="submit" value="Add to Cart" class="btn">
+
+        <a href="#" class="remove-from-cart" data-product-id="%= book._id %">Remove from cart</a>
+    </form>
+
+</div>
+<!-- end cart form  -->
+
+<!-- home section starts  -->
+<section class="home" id="home">
+
+    <div class="row">
+
+        <div class="content">
+            <h3>upto 75% off</h3>
+            <p>If you’re an Engineering student and need a books, Books4MU has great deals on a wide range of books. Shop for these books from top authors and avail hugely discounted prices</p>
+            <a href="#" class="btn">shop now</a>
+        </div>
+
+        <div class="swiper books-slider">
+            <div class="swiper-wrapper">
+                <a href="#" class="swiper-slide"><img src="https://raw.githubusercontent.com/KordePriyanka/Books4MU-Book-Store-Website-/main/image/book-1.png" alt=""></a>
+                <a href="#" class="swiper-slide"><img src="https://raw.githubusercontent.com/KordePriyanka/Books4MU-Book-Store-Website-/main/image/book-2.png" alt=""></a>
+                <a href="#" class="swiper-slide"><img src="https://raw.githubusercontent.com/KordePriyanka/Books4MU-Book-Store-Website-/main/image/book-3.png" alt=""></a>
+                <a href="#" class="swiper-slide"><img src="https://raw.githubusercontent.com/KordePriyanka/Books4MU-Book-Store-Website-/main/image/book-4.png" alt=""></a>
+                <a href="#" class="swiper-slide"><img src="https://raw.githubusercontent.com/KordePriyanka/Books4MU-Book-Store-Website-/main/image/book-5.png" alt=""></a>
+                <a href="#" class="swiper-slide"><img src="https://raw.githubusercontent.com/KordePriyanka/Books4MU-Book-Store-Website-/main/image/book-6.png" alt=""></a>
+            </div>
+            <img src="https://raw.githubusercontent.com/KordePriyanka/Books4MU-Book-Store-Website-/main/image/stand.png" class="stand" alt="">
+        </div>
+
+    </div>
+
+</section>
+<!-- home section ense  -->
+
+<section class="featured" id="featured">
+
+    <h1 class="heading"> <span>Books</span> </h1>
+
+    <div class="swiper featured-slider" >
+
+
+        <div class="swiper-wrapper" id="swi"></div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+
+    </div>
+
+  </section>
+<!-- featured section ends -->
+
+<!-- icons section starts  -->
+<section class="icons-container">
+
+    <div class="icons">
+        <i class="fas fa-shipping-fast"></i>
+        <div class="content">
+            <h3>free shipping</h3>
+            <p>order over 600LE</p>
+        </div>
+    </div>
+
+    <div class="icons">
+        <i class="fas fa-lock"></i>
+        <div class="content">
+            <h3>secure payment</h3>
+            <p>100 secure payment</p>
+        </div>
+    </div>
+
+    <div class="icons">
+        <i class="fas fa-redo-alt"></i>
+        <div class="content">
+            <h3>easy returns</h3>
+            <p>10 days returns</p>
+        </div>
+    </div>
+
+    <div class="icons">
+        <i class="fas fa-headset"></i>
+        <div class="content">
+            <h3>24/7 support</h3>
+            <p>call us anytime</p>
+        </div>
+    </div>
+
+</section>
+<!-- icons section ends -->
+
+<!-- deal section starts  -->
+
+<section class="deal">
+
+    <div class="content">
+        <h3>deal of the day</h3>
+        <h1>upto 50% off</h1>
+        <p>Checkout before this deal expires at midnight.</p>
+        <a href="#" class="btn">shop now</a>
+    </div>
+
+    <div class="image">
+        <img src="https://raw.githubusercontent.com/KordePriyanka/Books4MU-Book-Store-Website-/main/image/deal-img.jpg" alt="">
+    </div>
+
+</section>
+
+<!-- deal section ends -->
+
+<!-- reviews section starts  -->
+
+<section class="reviews" id="reviews">
+
+    <h1 class="heading"> <span>client's reviews</span> </h1>
+
+    <div class="swiper reviews-slider">
+
+        <div class="swiper-wrapper" id="swip">
+
+            
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- reviews section ends -->
+
+<!-- feedback section starts  -->
+
+<section class="blogs" id="feedback-form">
+
+    <h1 class="heading"> <span>feedback</span> </h1>
+
+    <section class="newsletter">
+
+        <form action="">
+            <h3>give your feedback here...</h3>
+            <input type="text" name="feedback" class="box" placeholder="Enter Your Feedback" id="feedback" >
+            <!-- <a href="./feedback.html" class="btn">Feedback</a> -->
+            <input type="submit" value="feedback" class="btn">
+
+
+               
+        </form>
+
+    </section>
+</section>
+
+<!-- feedback section ends -->
+
+<!-- footer section starts  -->
+
+<section class="footer">
+
+    <div class="box-container">
+
+        <div class="box">
+            <h3>our locations</h3>
+            <a href="#"> <i class="fas fa-map-marker-alt"></i> Egypt </a>
+            <a href="#"> <i class="fas fa-map-marker-alt"></i> Moroco </a>
+        </div>
+
+        <div class="box">
+            <h3>quick links</h3>
+            <a href="#"> <i class="fas fa-arrow-right"></i> home </a>
+            <a href="#featured"> <i class="fas fa-arrow-right"></i> featured </a>
+            <a href="#reviews"> <i class="fas fa-arrow-right"></i> reviews </a>
+            <a href="#feedback"> <i class="fas fa-arrow-right"></i> feedback </a>
+            <a href="#"> <i class="fas fa-arrow-right"></i> books </a>
+            <a href="#"> <i class="fas fa-arrow-right"></i> account info </a>
+        </div>
+
+        <div class="box">
+            <h3>contact info</h3>
+            <a href="#"> <i class="fas fa-phone"></i> 9167064054 </a>
+            <a href="#"> <i class="fas fa-phone"></i> 77388 44717 </a>
+            <a href="#"> <i class="fas fa-envelope"></i> anything@gmail.com </a>
+            <a href="#"> <i class="fas fa-envelope"></i> nournoramr@gmail.com </a>
+        </div>
+
+    </div>
+
+    <div class="share">
+        <a href="#" class="fab fa-facebook-f"></a>
+        <a href="#" class="fab fa-twitter"></a>
+        <a href="#" class="fab fa-instagram"></a>
+        <a href="#" class="fab fa-linkedin"></a>
+        <a href="#" class="fab fa-linkedin"></a>
+    </div>
+
+</section>
+
+<!-- footer section ends -->
+
+<!-- loader  -->
+
+<div class="loader-container">
+    <img src="https://raw.githubusercontent.com/KordePriyanka/Books4MU-Book-Store-Website-/main/image/loader-img.gif" alt="">
+</div>
+
+
+<script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+
+<!-- custom js file link  -->
+<script src="js/script.js"></script>
+
+
+
+<script>
+    // Handle form submission
+    const form = document.getElementById("signup");
+    form.addEventListener("submit", async (event) => {
+        event.preventDefault();
+
+        // Get form data
+        const name = document.getElementById("username").value;
+        const email = document.getElementById("email").value;
+        const password = document.getElementById("password").value;
+
+        // Send a POST request to the server
+        const response = await fetch("/auth/signup", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ name ,email, password }),
+        });
+
+        // Handle response
+        if (response.ok) {
+            // Redirect to a success page
+            window.location.href = "/index.html";
+        } else {
+            // Display an error message
+            alert("Sign up failed");
+        }
+    });
+</script>
+
+<script>
+    
+    // Make an AJAX request to fetch featured books
+  fetch('/books/')
+ .then(response => response.json())
+ .then(data => {
+    const featuredBooks = data;
+    const featuredSection = document.querySelector('.featured');
+
+    // Create HTML elements for each book
+    featuredBooks.forEach(book => {
+      const bookHTML = `
+        <div class="swiper-slide box">
+          <div class="icons">
+            <a href="#" class="fas fa-eye"></a>
+          </div>
+          <div class="image">
+            <img src="${book.image}" alt="${book.title}">
+          </div>
+          <div class="content">
+            <h3>${book.title}</h3>
+            <div class="price">$${book.price}</div>
+            <a href="#cart" class="btn">Add to Cart</a>
+          </div>
+        </div>
+      `;
+      const swiperWrapper = document.querySelector('#swi');
+      swiperWrapper.innerHTML += bookHTML;
+    });
+  })
+ .catch(error => console.error('Error fetching featured books:', error));
+
+
+
+</script>
+
+<script>
+    
+    // Make an AJAX request to fetch featured books
+  fetch('/feedback/')
+ .then(response => response.json())
+ .then(data => {
+    const feedbacks = data;
+    const feedbacksection = document.querySelector('.reviews');
+
+    // Create HTML elements for each book
+    feedbacks.forEach(feedback => {
+      const feedbackHTML = `
+      <div class="swiper-slide box">
+                <h3>${feedback.message}</h3>
+            </div>
+      `;
+      const swiperWrapper = document.querySelector('#swip');
+      swiperWrapper.innerHTML += feedbackHTML;
+    });
+  })
+ .catch(error => console.error('Error fetching Feedback:', error));
+
+
+
+</script>
+
+<script>
+    // Handle form submission
+    const feedbackForm = document.getElementById("feedback-form");
+    feedbackForm.addEventListener("submit", async (event) => {
+        event.preventDefault();
+
+        // Get form data
+        const feedback = document.getElementById("feedback").value;
+
+        // Send a POST request to the server
+        const response = await fetch("/feedback/", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ feedback }),
+        });
+
+        // Handle response
+        if (response.ok) {
+            // Redirect to a success page
+            window.location.href = "/index.html";
+        } else {
+            // Display an error message
+            alert("Your Feedback Failed, Try to write it later");
+        }
+    });
+</script>
+
+<!-- <script>
+    const loginForm = document.getElementById('login');
+    
+    loginForm.addEventListener('submit', async (event) => {
+      event.preventDefault();
+    
+      const mail = document.getElementById('mail').value;
+      const pword = document.getElementById('pword').value;
+      const uname = document.getElementById('uname').value;
+    
+      try {
+        const response = await fetch('/auth/login', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ mail, pword, uname })
+        });
+    
+        if (response.ok) {
+          // Redirect to homepage or show success message
+          alert("log in successful")
+        } else {
+          const error = await response.json();
+          // Show error message
+        }
+      } catch (error) {
+        console.error('Error logging in:', error);
+        // Show error message
+      }
+    });
+    </script>
+
+<script>
+    // Handle form submission
+    const forma = document.getElementById("login");
+    form.addEventListener("submit", async (event) => {
+        event.preventDefault();
+
+        // Get form data
+        const naame = document.getElementById("uname").value;
+        const emaail = document.getElementById("mail").value;
+        const paassword = document.getElementById("pword").value;
+
+        // Send a POST request to the server
+        const response = await fetch("/auth/login", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ naame ,emaail, paassword }),
+        });
+
+        // Handle response
+        if (response.ok) {
+            // Redirect to a success page
+            window.location.href = "/index.html";
+            alert("login sucsseful");
+        } else {
+            // Display an error message
+            alert("login failed");
+        }
+    });
+</script> -->
+
+</body>
+</html>
