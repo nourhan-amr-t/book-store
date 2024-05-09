@@ -22,10 +22,9 @@ async function signup(req, res) {
   return res.status(400).json({ message: 'Password must be at least 6 characters long' });
     }
 
-
     // Check if user already exists
-    const existingUser = await User.findOne({ email });
-    if (existingUser) {
+    const existingUser = await User.findOne({ email: email });
+    if (existingUser !== null) {
       return res.status(400).json({ message: 'User already exists' });
     }
 
@@ -47,9 +46,9 @@ async function login(req, res) {
   try {
     const { email, password } = req.body;
     // Check if user exists
-    const user = await User.findOne({ email });
-    if (!user) {
-      return res.status(404).json({ message: 'User not found' });
+    const user = await User.findOne({ email: email });
+    if (user == null) {
+      return res.status(401).json({ message: 'User not found' });
     }
     // Verify password
     const passwordMatch = await bcrypt.compare(password, user.password);

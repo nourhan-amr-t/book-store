@@ -71,14 +71,14 @@
 
     <div id="close-login-btn" class="fas fa-times"></div>
 
-    <form action="">
+    <form id="signin-form">
         <h3>login</h3>
         <span>email</span>
-        <input type="email" name="email" class="box" placeholder="enter your email" id="mail">
+        <input type="email" name="email" class="box" placeholder="enter your email" id="email-login">
         <span>username</span>
-        <input type="text" name="username" class="box" placeholder="enter your username" id="uname">
+        <input type="text" name="username" class="box" placeholder="enter your username" id="username-login">
         <span>password</span>
-        <input type="password" name="password" class="box" placeholder="enter your password" id="pword">
+        <input type="password" name="password" class="box" placeholder="enter your password" id="password-login">
         <div class="checkbox">
             <input type="checkbox" name="" id="remember-me">
             <label for="remember-me"> remember me</label>
@@ -90,11 +90,11 @@
 </div>
 <!-- end login form  -->
 <!-- signup form  -->
-<div class="signup-form-container" id="signup">
+<div class="signup-form-container" >
 
     <div id="close-signup-btn" class="fas fa-times"></div>
 
-    <form action="">
+    <form  id="signup-form">
         <h3>sign up</h3>
         <span>Email</span>
         <input type="email" name="email" class="box" placeholder="enter your email" id="email">
@@ -108,7 +108,7 @@
             <input type="checkbox" name="" id="remember-me">
             <label for="remember-me"> remember me</label>
         </div>
-        <input type="submit" value="sign up" class="btn">
+        <input type="submit"  class="btn">
     </form>
 
 </div>
@@ -261,7 +261,7 @@
 
     <section class="newsletter">
 
-        <form action="">
+        <form  id="feedback-form">
             <h3>give your feedback here...</h3>
             <input type="text" name="feedback" class="box" placeholder="Enter Your Feedback" id="feedback" >
             <!-- <a href="./feedback.html" class="btn">Feedback</a> -->
@@ -336,7 +336,7 @@
 
 <script>
     // Handle form submission
-    const form = document.getElementById("signup");
+    const form = document.getElementById("signup-form");
     form.addEventListener("submit", async (event) => {
         event.preventDefault();
 
@@ -456,7 +456,7 @@
     });
 </script>
 
-<!-- <script>
+<!--<script>
     const loginForm = document.getElementById('login');
     
     loginForm.addEventListener('submit', async (event) => {
@@ -488,17 +488,18 @@
       }
     });
     </script>
-
+-->
 <script>
     // Handle form submission
-    const forma = document.getElementById("login");
-    form.addEventListener("submit", async (event) => {
+    const forma = document.getElementById("signin-form");
+    forma.addEventListener("submit", async (event) => {
+        console.log("hello")
         event.preventDefault();
 
         // Get form data
-        const naame = document.getElementById("uname").value;
-        const emaail = document.getElementById("mail").value;
-        const paassword = document.getElementById("pword").value;
+        const name = document.getElementById("username-login").value;
+        const email = document.getElementById("email-login").value;
+        const password = document.getElementById("password-login").value;
 
         // Send a POST request to the server
         const response = await fetch("/auth/login", {
@@ -506,20 +507,20 @@
             headers: {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify({ naame ,emaail, paassword }),
+            body: JSON.stringify({ name ,email, password }),
         });
 
         // Handle response
         if (response.ok) {
             // Redirect to a success page
-            window.location.href = "/index.html";
+          //  window.location.href = "/index.html";
             alert("login sucsseful");
         } else {
             // Display an error message
             alert("login failed");
         }
     });
-</script> -->
+</script> 
 
 </body>
 </html>
