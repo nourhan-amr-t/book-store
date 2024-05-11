@@ -1,76 +1,69 @@
-searchForm = document.querySelector('.search-form');
+searchForm = document.querySelector(".search-form");
 
-document.querySelector('#search-btn').onclick = () =>{
-  searchForm.classList.toggle('active');
-}
+document.querySelector("#search-btn").onclick = () => {
+  searchForm.classList.toggle("active");
+};
 
-let loginForm = document.querySelector('.login-form-container');
-let signupForm = document.querySelector('.signup-form-container');
-let cartForm = document.querySelector('.cart-form-container');
-let userprofileForm = document.querySelector('.user-profile-container');
+let loginForm = document.querySelector(".login-form-container");
+let signupForm = document.querySelector(".signup-form-container");
+let cartForm = document.querySelector(".cart-form-container");
+let userprofileForm = document.querySelector(".user-profile-container");
 
-document.querySelector('#login-btn').onclick = () =>{
-  loginForm.classList.toggle('active');
-}
+document.querySelector("#login-btn").onclick = () => {
+  loginForm.classList.toggle("active");
+};
 
-document.querySelector('#cart').onclick = () =>{
-  cartForm.classList.toggle('active');
-}
-document.querySelector('#profileIconButton').onclick = () =>{
-  userprofileForm.classList.toggle('active');
-}
-document.querySelector('#close-login-btn').onclick = () =>{
-  loginForm.classList.remove('active');
-}
+document.querySelector("#cart").onclick = () => {
+  cartForm.classList.toggle("active");
+};
+document.querySelector("#profileIconButton").onclick = () => {
+  userprofileForm.classList.toggle("active");
+};
+document.querySelector("#close-login-btn").onclick = () => {
+  loginForm.classList.remove("active");
+};
 
-document.querySelector('#close-user-btn').onclick = () =>{
-  userprofileForm.classList.remove('active');
-}
-document.querySelector('#close-signup-btn').onclick = () =>{
-  loginForm.classList.remove('active');
-  signupForm.classList.remove('active');
-}
-document.querySelector('#close-cart-btn').onclick = () =>{
-  cartForm.classList.remove('active');
-}
+document.querySelector("#close-user-btn").onclick = () => {
+  userprofileForm.classList.remove("active");
+};
+document.querySelector("#close-signup-btn").onclick = () => {
+  loginForm.classList.remove("active");
+  signupForm.classList.remove("active");
+};
+document.querySelector("#close-cart-btn").onclick = () => {
+  cartForm.classList.remove("active");
+};
 
+window.onscroll = () => {
+  searchForm.classList.remove("active");
 
-
-
-window.onscroll = () =>{
-
-  searchForm.classList.remove('active');
-
-  if(window.scrollY > 80){
-    document.querySelector('.header .header-2').classList.add('active');
-  }else{
-    document.querySelector('.header .header-2').classList.remove('active');
+  if (window.scrollY > 80) {
+    document.querySelector(".header .header-2").classList.add("active");
+  } else {
+    document.querySelector(".header .header-2").classList.remove("active");
   }
+};
 
-}
-
-window.onload = () =>{
-
-  if(window.scrollY > 80){
-    document.querySelector('.header .header-2').classList.add('active');
-  }else{
-    document.querySelector('.header .header-2').classList.remove('active');
+window.onload = () => {
+  if (window.scrollY > 80) {
+    document.querySelector(".header .header-2").classList.add("active");
+  } else {
+    document.querySelector(".header .header-2").classList.remove("active");
   }
 
   fadeOut();
+};
 
+function loader() {
+  document.querySelector(".loader-container").classList.add("active");
 }
 
-function loader(){
-  document.querySelector('.loader-container').classList.add('active');
-}
-
-function fadeOut(){
+function fadeOut() {
   setTimeout(loader, 4000);
 }
 
 var swiper = new Swiper(".books-slider", {
-  loop:true,
+  loop: true,
   centeredSlides: true,
   autoplay: {
     delay: 9500,
@@ -91,7 +84,7 @@ var swiper = new Swiper(".books-slider", {
 
 var swiper = new Swiper(".featured-slider", {
   spaceBetween: 10,
-  loop:true,
+  loop: true,
   centeredSlides: true,
   autoplay: {
     delay: 9500,
@@ -119,7 +112,7 @@ var swiper = new Swiper(".featured-slider", {
 
 var swiper = new Swiper(".arrivals-slider", {
   spaceBetween: 10,
-  loop:true,
+  loop: true,
   centeredSlides: true,
   autoplay: {
     delay: 9500,
@@ -140,8 +133,8 @@ var swiper = new Swiper(".arrivals-slider", {
 
 var swiper = new Swiper(".reviews-slider", {
   spaceBetween: 10,
-  grabCursor:true,
-  loop:true,
+  grabCursor: true,
+  loop: true,
   centeredSlides: true,
   autoplay: {
     delay: 9500,
@@ -162,8 +155,8 @@ var swiper = new Swiper(".reviews-slider", {
 
 var swiper = new Swiper(".blogs-slider", {
   spaceBetween: 10,
-  grabCursor:true,
-  loop:true,
+  grabCursor: true,
+  loop: true,
   centeredSlides: true,
   autoplay: {
     delay: 9500,
