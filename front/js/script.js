@@ -12,13 +12,11 @@ let userprofileForm = document.querySelector('.user-profile-container');
 document.querySelector('#login-btn').onclick = () =>{
   loginForm.classList.toggle('active');
 }
-document.querySelector('#create').onclick = () =>{
-  signupForm.classList.toggle('active');
-}
+
 document.querySelector('#cart').onclick = () =>{
   cartForm.classList.toggle('active');
 }
-document.querySelector('#user-profileee').onclick = () =>{
+document.querySelector('#profileIconButton').onclick = () =>{
   userprofileForm.classList.toggle('active');
 }
 document.querySelector('#close-login-btn').onclick = () =>{
