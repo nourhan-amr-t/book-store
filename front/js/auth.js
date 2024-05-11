@@ -80,4 +80,5 @@ async function handleLoginStatusChange() {
 // should be called when doc is loaded
 document.addEventListener("DOMContentLoaded", async () => {
   handleLoginStatusChange();
+  loadFeedBack()
 });
