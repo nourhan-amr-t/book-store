@@ -2,9 +2,6 @@ const express = require('express');
 const session = require('express-session');
 const dotenv = require('dotenv');
 const  connectToDb  = require('./db');
-const cors = require('cors');
-const router = express.Router();
-const bodyparser = require("body-parser")
 const authRoutes = require('./routes/authRoutes');
 
 const userRoutes = require('./routes/userRoutes');
@@ -19,6 +16,7 @@ dotenv.config();
 
 const app = express();
 app.use(express.json());
+
 const secretKey = require('crypto').randomBytes(32).toString('hex');
 
 app.use(session({

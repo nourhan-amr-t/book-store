@@ -35,7 +35,7 @@
           <div id="search-btn" class="fas fa-search"></div>
           <a href="#cart" class="fas fa-shopping-cart" id="cart"></a>
           <a href="#login"><div id="login-btn" class="fas fa-user"></div></a>
-          <a href="#user-profilee" id="user-profileee"><div class="fas fa-user-circle"></div></a>
+          <a href="#user-profilee" id="profileIconButton"><div class="fas fa-user-circle"></div></a>
           <!-- <a href="#user-profile"><div id="user-profile-btn" class="fas fa-user-circle"></div></a> -->
         </div>
       </div>
@@ -67,12 +67,10 @@
     <div class="login-form-container" id="login">
       <div id="close-login-btn" class="fas fa-times"></div>
 
-      <form id="signin-form">
+      <form onsubmit="handleSignIn(); return false;">
         <h3>login</h3>
         <span>email</span>
         <input type="email" name="email-login" class="box" placeholder="enter your email" id="email-login" />
-        <span>username</span>
-        <input type="text" name="username-login" class="box" placeholder="enter your username" id="username-login" />
         <span>password</span>
         <input type="password" name="password-login" class="box" placeholder="enter your password" id="password-login" />
         <div class="checkbox">
@@ -80,7 +78,7 @@
           <label for="remember-me"> remember me</label>
         </div>
         <input type="submit" value="sign in" class="btn" />
-        <p>don't have an account ? <a href="#signup" id="create">create one</a></p>
+        <p>don't have an account ? <a id="signup-btn">create one</a></p>
       </form>
     </div>
     <!-- end login form  -->
@@ -88,7 +86,7 @@
     <div class="signup-form-container">
       <div id="close-signup-btn" class="fas fa-times"></div>
 
-      <form id="signup-form">
+      <form onsubmit="handleSignUp(); return false;">
         <h3>sign up</h3>
         <span>Email</span>
         <input type="email" name="email" class="box" placeholder="enter your email" id="email" />
@@ -110,33 +108,28 @@
 
     <div class="user-profile-container" id="user-profilee">
       <div id="close-user-btn" class="fas fa-times"></div>
-      <form id="user-profile-form">
+      <div>
         <h1>User Profile</h1>
         <!-- Edit Profile Link -->
         <div class="edit-profile">
-          <button id="edit-profile-btn" class="btn">Edit Profile</button>
+          <button id="edit-profile-btn" onclick="showUpdateNameForm()" class="btn">Edit Profile</button>
         </div>
 
         <!-- Logout Link -->
         <div class="logout">
-          <button id="logout-btn" class="btn">Delete Profile</button>
+          <button onclick="deleteAccount()" class="btn">Delete Profile</button>
         </div>
         <!-- Edit Profile Form -->
         <div class="edit-profile-form" id="edit-profile-block">
           <h2>Edit Profile</h2>
-          <form id="edit-profile-form">
-            <label for="name">Name:</label>
-            <input type="text" id="name-edit" value="John Doe" />
-
-
+          <form onsubmit="updateAccountDetails(); return false;">
             <label for="username">Username:</label>
-            <input type="text" id="username-edit" value="johndoe" />
+            <input type="text" id="username-update" value="johndoe" />
 
             <button type="submit">Save Changes</button>
           </form>
         </div>
-        <button type="submit" class="btn">Save Changes</button>
-      </form>
+      </div>
     </div>
     <!-- cart form  -->
     <div class="cart-form-container" id="cart">
@@ -260,7 +253,7 @@
       <h1 class="heading"> <span>feedback</span> </h1>
 
       <section class="newsletter">
-        <form id="feedback-form">
+        <form  onsubmit="sendFeedback(); return false;">
           <h3>give your feedback here...</h3>
           <input type="text" name="feedback" class="box" placeholder="Enter Your Feedback" id="feedback" />
           <!-- <a href="./feedback.html" class="btn">Feedback</a> -->
@@ -321,282 +314,8 @@
 
     <!-- custom js file link  -->
     <script src="js/script.js"></script>
-
-    <script>
-      // Handle form submission
-      const form = document.getElementById("signup-form");
-      form.addEventListener("submit", async (event) => {
-        event.preventDefault();
-
-        // Get form data
-        const name = document.getElementById("username").value;
-        const email = document.getElementById("email").value;
-        const password = document.getElementById("password").value;
-
-        // Send a POST request to the server
-        const response = await fetch("/auth/signup", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ name, email, password }),
-        });
-
-        // Handle response
-        if (response.ok) {
-          // Redirect to a success page
-          window.location.href = "/index.html";
-        } else {
-          // Display an error message
-          alert("Sign up failed");
-        }
-      });
-    </script>
-
-    <script>
-      // Make an AJAX request to fetch featured books
-      fetch("/books/")
-        .then((response) => response.json())
-        .then((data) => {
-          const featuredBooks = data;
-          const featuredSection = document.querySelector(".featured");
-
-          // Create HTML elements for each book
-          featuredBooks.forEach((book) => {
-            const bookHTML = `
-        <div class="swiper-slide box">
-          <div class="icons">
-            <a href="#" class="fas fa-eye"></a>
-           
-          </div>
-          <div class="image">
-            <img src="${book.image}" alt="${book.title}">
-          </div>
-          <div class="content">
-            <h3>${book.title}</h3>
-            <div class="price">$${book.price}</div>
-            <a href="#cart" class="btn">Add to Cart</a>
-          </div>
-        </div>
-      `;
-            const swiperWrapper = document.querySelector("#swi");
-            swiperWrapper.innerHTML += bookHTML;
-          });
-        })
-        .catch((error) => console.error("Error fetching featured books:", error));
-    </script>
-
-    <script>
-      // Make an AJAX request to fetch featured books
-      fetch("/feedback/")
-        .then((response) => response.json())
-        .then((data) => {
-          const feedbacks = data;
-          const feedbacksection = document.querySelector(".reviews");
-
-          // Create HTML elements for each book
-          feedbacks.forEach((feedback) => {
-            const feedbackHTML = `
-      <div class="swiper-slide box">
-                <h3>${feedback.content}</h3>
-            </div>
-      `;
-            const swiperWrapper = document.querySelector("#swip");
-            swiperWrapper.innerHTML += feedbackHTML;
-          });
-        })
-        .catch((error) => console.error("Error fetching Feedback:", error));
-    </script>
-
-    <script>
-      // Handle form submission
-      const feedbackForm = document.getElementById("feedback-form");
-      feedbackForm.addEventListener("submit", async (event) => {
-        event.preventDefault();
-
-        // Get form data
-        const feedback = document.getElementById("feedback").value;
-
-        // Send a POST request to the server
-        const response = await fetch("/feedback/", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ content: feedback }),
-        });
-
-        // Handle response
-        if (response.ok) {
-          // Redirect to a success page
-          window.location.href = "/index.html";
-        } else {
-          // Display an error message
-          alert("Your Feedback Failed, Try to write it later");
-        }
-      });
-    </script>
-
-    <script>
-      // Handle form submission
-      const forma = document.getElementById("signin-form");
-      forma.addEventListener("submit", async (event) => {
-        console.log("hello");
-        event.preventDefault();
-
-        // Get form data
-        const name = document.getElementById("username-login").value;
-        const email = document.getElementById("email-login").value;
-        const password = document.getElementById("password-login").value;
-
-        // Send a POST request to the server
-        const response = await fetch("/auth/login", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ name, email, password }),
-        });
-
-        // Handle response
-        if (response.ok) {
-          // Redirect to a success page
-          window.location.href = "/index.html";
-          alert("login sucsseful");
-        } else {
-          // Display an error message
-          alert("login failed");
-        }
-      });
-    </script>
-
-    <script>
-      const editProfileBtn = document.getElementById("edit-profile-btn");
-      const logoutBtn = document.getElementById("logout-btn");
-
-      editProfileBtn.addEventListener("click", () => {
-        document.getElementById("edit-profile-block").style.display = "block";
-      });
-
-      changePasswordBtn.addEventListener("click", () => {
-        changePasswordForm.style.display = "block";
-      });
-
-      logoutBtn.addEventListener("click", () => {
-        // Implement logout functionality here
-      });
-    </script>
-
-    <script>
-      fetch("/users/details", {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      })
-        .then(async (resp) => {
-          console.log(resp.status);
-          let response = await resp.json();
-
-          if (resp.status == 200 || resp.status == 304) {
-            const userInfoHTML = `
-          <div class="user-info">
-            <h2>${response.name}</h2>
-            <p><strong>Email:</strong> ${response.email}</p>
-            <p><strong>Username:</strong> ${response.name}</p>
-          </div>
-        `;
-            console.log(userInfoHTML);
-          } else {
-            document.getElementById("user-profileee").style.display = "none";
-            console.error("Error fetching user details:", error);
-          }
-        })
-        .catch((error) => {
-          console.log(error);
-          document.getElementById("user-profileee").style.display = "none";
-        });
-    </script>
-
-    <script>
-      // Get the "Edit Profile" form
-      const editProfileForm = document.getElementById("#edit-profile-form");
-
-      // Add an event listener to the "Edit Profile" form
-      editProfileForm.addEventListener("submit", async (event) => {
-        // Prevent the default form submission behavior
-        event.preventDefault();
-
-        // Get the form data
-        const formData = new FormData(editProfileForm);
-
-        // Send a request to the Node.js server to update the user name
-        const response = await fetch("/users/update/name", {
-          method: "PUT",
-          body: formData,
-        });
-
-        // Handle the response from the Node.js server
-        if (response.ok) {
-          // Update the user interface with the new user name
-          // ...
-
-          // Hide the "Edit Profile" form
-          document.querySelector("#edit-profile-form").style.display = "none";
-        } else {
-          // Handle the error
-          // ...
-        }
-      });
-    </script>
-
-    <script>
-      // Get the "Delete Account" button
-      const deleteAccountBtn = document.getElementById("#logout-btn");
-
-      // Add an event listener to the "Delete Account" button
-      deleteAccountBtn.addEventListener("click", async () => {
-        // Send a request to the Node.js server to delete the user account
-        const response = await fetch("/users/delete", {
-          method: "DELETE",
-        });
-
-        // Handle the response from the Node.js server
-        if (response.ok) {
-          // Redirect the user to the login page
-          window.location.href = "/login";
-        } else {
-          // Handle the error
-          // ...
-        }
-      });
-    </script>
-
-<script>
-// Get the button and div elements
-const checkLoginBtn = document.getElementById("#user-profileee");
-const loginStatusDiv = document.getElementById("login-status");
-
-// Add an event listener to the button
-checkLoginBtn.addEventListener("click", async () => {
-  try {
-    // Make a GET request to the /logged endpoint
-    const response = await fetch("/auth/logged", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json"
-      }
-    });
-    const data = await response.json();
-    if (resp.status == 401) {
-      alert("failed");
-    } 
-  } catch (error) {
-    console.error("Error checking login status:", error);
-    loginStatusDiv.innerHTML = "Error checking login status";
-  }
-});
-</script>
-
+    <script src="js/auth.js"></script>
+    <script src="js/account.js"></script>
+    <script src="js/books.js"></script>
   </body>
 </html>

@@ -1,45 +1,43 @@
-
-
-const bcrypt = require('bcryptjs');
-const User = require('../Models/userModel');
+const bcrypt = require("bcryptjs");
+const User = require("../Models/userModel");
 
 async function signup(req, res) {
   try {
     const { email, password, name } = req.body;
-    
+
     // Check if email is valid
-    if (!email || !email.includes('@') || !email.includes('.')) {
-      return res.status(400).json({ message: 'Invalid email address' });
-    }
-    
-// Check if name is provided
-    if (!name) {
-  return res.status(400).json({ message: 'Name is required' });
+    if (!email || !email.includes("@") || !email.includes(".")) {
+      return res.status(400).json({ message: "Invalid email address" });
     }
 
-// Check if password meets criteria
+    // Check if name is provided
+    if (!name) {
+      return res.status(400).json({ message: "Name is required" });
+    }
+
+    // Check if password meets criteria
     if (!password || password.length < 6) {
-  return res.status(400).json({ message: 'Password must be at least 6 characters long' });
+      return res.status(400).json({ message: "Password must be at least 6 characters long" });
     }
 
 
     // Check if user already exists
     const existingUser = await User.findOne({ email: email });
     if (existingUser !== null) {
-      return res.status(400).json({ message: 'User already exists' });
+      return res.status(400).json({ message: "User already exists" });
     }
 
     // Hash the password
     const hashedPassword = await bcrypt.hash(password, 10);
-    
+
     // Create new user
     const newUser = new User({ email, password: hashedPassword, name });
     await newUser.save();
 
-    res.status(201).json({ message: 'User created successfully' });
+    res.status(201).json({ message: "User created successfully" });
   } catch (error) {
-    console.error('Error signing up:', error);
-    res.status(500).json({ message: 'Server error' });
+    console.error("Error signing up:", error);
+    res.status(500).json({ message: "Server error" });
   }
 }
 
@@ -49,36 +47,33 @@ async function login(req, res) {
     // Check if user exists
     const user = await User.findOne({ email: email });
     if (user == null) {
-      return res.status(401).json({ message: 'User not found' });
+      return res.status(401).json({ message: "User not found" });
     }
     // Verify password
     const passwordMatch = await bcrypt.compare(password, user.password);
     if (!passwordMatch) {
-      return res.status(401).json({ message: 'Invalid credentials' });
+      return res.status(401).json({ message: "Invalid credentials" });
     }
     // Set userId in session
     req.session.userId = user._id;
-    res.json({ message: 'Login successful' });
+    res.json({ message: "Login successful" });
   } catch (error) {
-    console.error('Error logging in:', error);
-    res.status(500).json({ message: 'Server error' });
+    console.error("Error logging in:", error);
+    res.status(500).json({ message: "Server error" });
   }
 }
 
-
-async function logged(req, res) {
+async function isLogged(req, res) {
   try {
     if (req.session.userId) {
-      return res.status(200).json({ userId: req.session.userId });
-    }else{ req.status(200).json({error:"not logged"})
-          return res.status(401).json({ message: 'User not found' });
-      
-  }
-  
+      return res.status(200).json({ message: "User is logged in" });
+    } else {
+      return res.status(401).json({ message: "User is not logged in" });
+    }
   } catch (error) {
- 
-    res.status(500).json({ message: 'Server error' });
+    console.error("Error logging in:", error);
+    res.status(500).json({ message: "Server error" });
   }
 }
 
-module.exports = { signup, login, logged };
+module.exports = { signup, login, isLogged };
