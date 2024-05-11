@@ -21,12 +21,17 @@ async function loadFeedBack() {
 }
 
 async function updateAccountDetails() {
-  const formData = new FormData(editProfileForm);
-  // Send a request to the Node.js server to update the user name
   const response = await fetch("/users/update/name", {
-    method: "PUT",
-    body: formData,
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ username: document.getElementById("username-update").value }),
   });
+  if (response.ok) {
+    closeUpdateNameForm();
+    handleLoginStatusChange();
+  }
 }
 
 async function deleteAccount() {
@@ -44,29 +49,17 @@ async function deleteAccount() {
   }
 }
 
-async function loadAccount() {
-  fetch("/users/details", {
+async function getAccountUsername() {
+  let resp = await fetch("/users/details", {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
     },
-  })
-    .then(async (resp) => {
-      let response = await resp.json();
+  });
 
-      const userInfoHTML = `
-      <div class="user-info">
-        <h2>${response.name}</h2>
-        <p><strong>Email:</strong> ${response.email}</p>
-        <p><strong>Username:</strong> ${response.name}</p>
-      </div>
-    `;
-      // edit needed here
-    })
-    .catch((error) => {
-      console.log(error);
-      document.getElementById("user-profileee").style.display = "none";
-    });
+  let response = await resp.json();
+
+  return response.name;
 }
 
 async function sendFeedback() {
@@ -92,10 +85,11 @@ async function sendFeedback() {
   }
 }
 
-/*async function showDeleteForm() {
-  document.getElementById("delete-profile-block").style.display = "block";
-}*/
 async function showUpdateNameForm() {
   document.getElementById("edit-profile-block").style.display = "block";
 }
 
+async function closeUpdateNameForm() {
+  document.querySelector(".user-profile-container").classList.remove("active");
+  document.getElementById("edit-profile-block").style.display = "none";
+}

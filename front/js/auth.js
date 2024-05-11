@@ -39,7 +39,7 @@ async function handleSignUp() {
 
 async function handleSignIn() {
   // Get form data
-  const name = document.getElementById("username-login").value;
+
   const email = document.getElementById("email-login").value;
   const password = document.getElementById("password-login").value;
 
@@ -49,7 +49,7 @@ async function handleSignIn() {
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ name, email, password }),
+    body: JSON.stringify({ email, password }),
   });
 
   // Handle response
@@ -71,6 +71,8 @@ async function handleLoginStatusChange() {
 
     document.querySelector(".login-form-container").classList.remove("active");
     document.querySelector(".signup-form-container").classList.remove("active");
+
+    document.getElementById("username-update").value = await getAccountUsername();
   } else {
     document.getElementById("profileIconButton").style.display = "none";
     document.getElementById("login-btn").style.display = "inline-block";
@@ -80,5 +82,5 @@ async function handleLoginStatusChange() {
 // should be called when doc is loaded
 document.addEventListener("DOMContentLoaded", async () => {
   handleLoginStatusChange();
-  loadFeedBack()
+  loadFeedBack();
 });
