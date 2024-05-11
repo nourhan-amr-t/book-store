@@ -55,11 +55,29 @@ async function handleSignIn() {
   // Handle response
   if (response.ok) {
     // Redirect to a success page
-    handleLoginStatusChange()
+    handleLoginStatusChange();
     alert("login sucsseful");
   } else {
     // Display an error message
-    handleLoginStatusChange()
+    handleLoginStatusChange();
     alert("login failed");
   }
 }
+
+async function handleLoginStatusChange() {
+  if (await isLogged()) {
+    document.getElementById("profileIconButton").style.display = "inline-block";
+    document.getElementById("login-btn").style.display = "none";
+
+    document.querySelector(".login-form-container").classList.remove("active");
+    document.querySelector(".signup-form-container").classList.remove("active");
+  } else {
+    document.getElementById("profileIconButton").style.display = "none";
+    document.getElementById("login-btn").style.display = "inline-block";
+  }
+}
+
+// should be called when doc is loaded
+document.addEventListener("DOMContentLoaded", async () => {
+  handleLoginStatusChange();
+});

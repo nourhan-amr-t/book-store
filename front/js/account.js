@@ -99,19 +99,3 @@ async function showUpdateNameForm() {
   document.getElementById("edit-profile-block").style.display = "block";
 }
 
-async function handleLoginStatusChange() {
-  if (await isLogged()) {
-    document.getElementById("profileIconButton").style.display = "inline-block";
-    document.getElementById("login-btn").style.display = "none";
-    
-  } else {
-
-    document.getElementById("profileIconButton").style.display = "none";
-    document.getElementById("login-btn").style.display = "inline-block";
-  }
-}
-
-// should be called when doc is loaded
-document.addEventListener("DOMContentLoaded", async () => {
-  handleLoginStatusChange();
-});

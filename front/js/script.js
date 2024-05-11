@@ -13,6 +13,11 @@ document.querySelector("#login-btn").onclick = () => {
   loginForm.classList.toggle("active");
 };
 
+document.querySelector("#signup-btn").onclick = () => {
+  loginForm.classList.remove("active");
+  signupForm.classList.toggle("active");
+};
+
 document.querySelector("#cart").onclick = () => {
   cartForm.classList.toggle("active");
 };
