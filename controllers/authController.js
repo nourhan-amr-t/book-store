@@ -63,25 +63,6 @@ async function login(req, res) {
   }
 }
 
-<<<<<<< Updated upstream
-
-async function logged(req, res) {
-  try {
-    if (req.session.userId) {
-      return res.status(200).json({ userId: req.session.userId });
-    }else{ req.status(200).json({error:"not logged"})
-          return res.status(401).json({ message: 'User not found' });
-      
-  }
-  
-  } catch (error) {
- 
-    res.status(500).json({ message: 'Server error' });
-  }
-}
-
-module.exports = { signup, login, logged };
-=======
 async function isLogged(req, res) {
   try {
     if (req.session.userId) {
@@ -96,4 +77,3 @@ async function isLogged(req, res) {
 }
 
 module.exports = { signup, login, isLogged };
->>>>>>> Stashed changes
