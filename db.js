@@ -1,3 +1,4 @@
+//Database connected file
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 
