@@ -309,7 +309,32 @@
     <div class="loader-container">
       <img src="https://raw.githubusercontent.com/KordePriyanka/Books4MU-Book-Store-Website-/main/image/loader-img.gif" alt="" />
     </div>
+    <script>
+      const saveCartButtons = document.querySelectorAll('.save-cart');
 
+saveCartButtons.forEach((button) => {
+  button.addEventListener('click', async (event) => {
+    event.preventDefault();
+
+    const response = await fetch(/api/cart/save, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+
+    const data = await response.json();
+
+    if (response.ok) {
+      console.log(data);
+      // Display a success message or redirect the user to a confirmation page
+    } else {
+      console.error(data);
+      // Display an error message
+    }
+  });
+});
+    </script>
     <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
 
     <!-- custom js file link  -->
