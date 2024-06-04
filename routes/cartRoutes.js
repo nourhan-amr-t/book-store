@@ -6,7 +6,7 @@ const cartController = require('../controllers/cartController');
 router.post('/add', cartController.addToCart);
 router.patch('/update', cartController.updateQuantity);
 router.delete('/clear', cartController.clearCart);
-router.post('/save', cartController.saveCart);
+router.post('/orders', cartController. orders);
 
 
 module.exports = router;

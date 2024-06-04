@@ -1,5 +1,5 @@
 const Cart = require('../Models/cartModel');
-const SavedCart = require('../Models/savedCartModel');
+const SavedCart = require('../Models/ORDERSS');
 const Book = require('../Models/bookModel');
 
 const cartController = {
@@ -72,7 +72,7 @@ const cartController = {
   },
 
 
-  saveCart: async (req, res) => {
+  orders: async (req, res) => {
     try {
       const userId = req.session.userId;
 
@@ -97,9 +97,9 @@ const cartController = {
       // Clear the user's current cart
       await Cart.deleteMany({ userId });
 
-      res.status(200).json({ message: 'Cart saved successfully' });
+      res.status(200).json({ message: 'Order successfully' });
     } catch (error) {
-      console.error('Error saving cart:', error);
+      console.error('Error In Order cart:', error);
       res.status(500).json({ error: 'Server error' });
     }
   },

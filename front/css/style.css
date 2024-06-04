@@ -356,8 +356,8 @@ section{
 
 
 
-/*userprofile*/
-.user-profile{
+/* /userprofile/ */
+.user-profile-container{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -368,10 +368,10 @@ section{
     height:100%;
     width:100%;
 }
-.user-profile .active{
+.user-profile-container.active{
     right:0;
 }
-.user-profile form{
+.user-profile-container form{
     background:#fff;
     border:var(--border);
     width:40rem;
@@ -380,18 +380,18 @@ section{
     border-radius: .5rem;
     margin:2rem;
 }
-.user-profile form h3{
+.user-profile-container form h3{
     font-size: 2.5rem;
     text-transform: uppercase;
     color:var(--black);
     text-align: center;
 }
-.user-profile form span{
+.user-profile-container form span{
     display: block;
     font-size: 1.5rem;
     padding-top: 1rem;
 }
-.user-profile form .box{
+.user-profile-container form .box{
     width: 100%;
     margin:.7rem 0;
     font-size: 1.6rem;
@@ -401,26 +401,37 @@ section{
     color:var(--black);
     text-transform: none;
 }
-.user-profile form .checkbox{
+.user-profile-container form .checkbox{
     display:flex;
     align-items: center;
     gap:.5rem;
     padding:1rem 0;
 }
-
-.user-profile form .btn{
+.user-profile-container form .checkbox label{
+    font-size: 1.5rem;
+    color:var(--light-color);
+    cursor: pointer;
+}
+.user-profile-container form .btn{
     text-align: center;
     width:100%;
     margin:1.5rem 0;
 }
-.user-profile form p{
+.user-profile-container form p{
     padding-top: .8rem;
     color:var(--light-color);
     font-size: 1.5rem;
 }
-.user-profile form p a{
+.user-profile-container form p a{
     color:var(--green);
     text-decoration: underline;
+}
+.user-profile-container #close-user-btn{
+    position: absolute;
+    top:1.5rem; right:2.5rem;
+    font-size: 5rem;
+    color:var(--black);
+    cursor: pointer;
 }
 .user-profile #edit-profile-btn{
     position: absolute;
@@ -438,13 +449,7 @@ section{
     cursor: pointer;
 }
 
-.user-profile #close-user-btn{
-    position: absolute;
-    top:1.5rem; right:2.5rem;
-    font-size: 5rem;
-    color:var(--black);
-    cursor: pointer;}
-/*end userprofil*/
+/* /end userprofil/ */
 
 
 /*cart*/
